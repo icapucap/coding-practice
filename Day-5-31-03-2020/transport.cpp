@@ -11,13 +11,13 @@ int main(){
     }
     index-=1;
 
-    vector<int> v(n-1);
-    for(int i=0;i<v.size();i++){
+    vector<int> v(n,0);
+    for(int i=0;i<v.size()-1;i++){
         cin>>v[i];
     }
     int turn=0;
     vector<int> nxt;
-    while(n>turn){
+    while(n-1>turn){
         turn+=v[turn];
         nxt.push_back(turn);
     }
