@@ -20,7 +20,9 @@ int main(){
         } 
         int i=n-1;
         
-        while(i>2){
+        while(i>=0){
+
+            if(i==0||i==1)break;
             if(v[i]==1)v[i]=0;
             else v[i]=1;
             if(v[i-1]==1)v[i-1]=0;
@@ -28,11 +30,21 @@ int main(){
             if(v[i-1]==0){
                 if(v[i-2]==0){
                     c++;
+                    v[i-2]=1;
                     i-=2;
-                    v[i]=1;
-                }else i-=2;
+                    
+                }
+                else {
+                    v[i-2]=1;
+                    i-=2;
+                    
+                }
             }
-            else i-=1;
+            else {
+                v[i-1]=1;
+                i-=1;
+                
+            }
             // if(v[i-1]==0&&v[i-2]==0){
             //     c++;
             //     i-=2;
