@@ -20,18 +20,26 @@ int main(){
         } 
         int i=n-1;
         
-        while(i>=2){
+        while(i>2){
             if(v[i]==1)v[i]=0;
             else v[i]=1;
             if(v[i-1]==1)v[i-1]=0;
             else v[i-1]=1;
-            if(v[i-1]==0&&v[i-2]==0){
-                c++;
-                i-=2;
-                v[i]=1;
+            if(v[i-1]==0){
+                if(v[i-2]==0){
+                    c++;
+                    i-=2;
+                    v[i]=1;
+                }else i-=2;
             }
-            else if(v[i-1]==0&&v[i-2]==1)i-=2;
             else i-=1;
+            // if(v[i-1]==0&&v[i-2]==0){
+            //     c++;
+            //     i-=2;
+            //     v[i]=1;
+            // }
+            // else if(v[i-1]==0&&v[i-2]==1)i-=2;
+            // else i-=1;
         }
         cout<<c<<endl;
     }
