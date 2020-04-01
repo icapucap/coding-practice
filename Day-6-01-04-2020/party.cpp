@@ -4,28 +4,23 @@ using namespace std;
 int main(){
     int n;
     cin>>n;
-    vector<int> v,negone;
-    unordered_map<int,int> u;
+    vector<int>v(n);
     int temp;
     for(int i=0;i<n;i++){
-        cin>>temp;
-        v.push_back(temp);
+        cin>>v[i];
     }
+    vector<int> lvl;
     for(int i=0;i<n;i++){
-        if(v[i]==-1)negone.push_back(i);
-    }
-    if(negone.size()==1){
-        for(auto x:v){
-            ++u[x];
+        int h=0,ctr=v[i];
+        while(ctr!=-1){
+            ctr = v[ctr-1];
+            h++;
         }
-        cout<<u.size();
-        exit(0);
+        lvl.push_back(h);
     }
-    for(int i=0;i<negone.size()-1;i++){
-        for(int j=negone[i]+1;j<negone[i+1];j++){
-            u[v[j]-negone[i]]+=1;
-        }
-    }
-    cout<<u.size()+1;
+    sort(lvl.begin(),lvl.end());
+    int count = unique(lvl.begin(),lvl.end())-lvl.begin();
+    cout<<count;
+
     return 0;
 }
