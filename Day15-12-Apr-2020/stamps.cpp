@@ -30,7 +30,7 @@ int main(){
     for(auto x:c)
         if(x.second==1)
             {
-                dfs(x.second);
+                dfs(x.first);
                 break;
             }
     
